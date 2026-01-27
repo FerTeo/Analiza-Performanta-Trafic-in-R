@@ -1,0 +1,13 @@
+# fisiere specifice R si RStudio
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+# fisiere de sistem
+.DS_Store
+Thumbs.db
+
+*.csv
+*.png
+*.pdf
