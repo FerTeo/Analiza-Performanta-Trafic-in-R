@@ -41,6 +41,14 @@ trafic_teoretic_binomiala <-function(n_val, p_val)
 }
 
 
+# helper pentru anotimpuri
+get_anotimp <- function(m) {
+  if (m %in% c(12, 1, 2)) return("Iarna")
+  if (m %in% c(3, 4, 5)) return("Primavara")
+  if (m %in% c(6, 7, 8)) return("Vara")
+  return("Toamna")
+}
+
 
 ex1_trafic_server <- function (id)
 {
@@ -48,24 +56,40 @@ ex1_trafic_server <- function (id)
                function(input, output, session)
                {
                  
+
+                 
                  date_trafic <- eventReactive(input$btn_sim_trafic,
                  {
                    zile_totale <- input$sim_ani*365
                    
-                   #k_d
+                   # Generam structura temporala intai
+                   vec_luni <- rep(rep(1:12, each=30), length.out = zile_totale)
+                   vec_anotimpuri <- sapply(vec_luni, get_anotimp)
+                   
+                   # Factori de sezonalitate
+                   # Iarna: 0.8, Primavara: 1.0, Vara: 1.5, Toamna: 1.1
+                   map_factor <- c("Iarna"=0.8, "Primavara"=1.0, "Vara"=1.5, "Toamna"=1.1)
+                   vec_factori <- map_factor[vec_anotimpuri]
+                   
+                   # Generare K_d cu parametri ajustati
                    K_d <- if(input$distributie_trafic=='Poisson')
                    {
-                     trafic_simulat_poisson(zile_totale, input$lambda)
+                     # Lambda variaza in functie de zi
+                     lambda_vec <- input$lambda * vec_factori
+                     # rpois accepta vector pentru lambda
+                     rpois(zile_totale, lambda=lambda_vec)
                    }
                    else
                    {
-                     trafic_simulat_binomiala(zile_totale, input$n_binom, input$p_binom)
+                     # N (capacitatea maxima) variaza in functie de zi (e.g. mai multi potentiali clienti vara)
+                     n_vec <- round(input$n_binom * vec_factori)
+                     rbinom(zile_totale, size=n_vec, prob = input$p_binom)
                    }
                    
                    data.frame(
                      zile=1:zile_totale,
                      anul=rep(1:input$sim_ani, each=365)[1:zile_totale],
-                     luna=rep(rep(1:12, each=30), length.out = zile_totale),
+                     luna=vec_luni,
                      clienti=K_d
                    )
                  })
@@ -93,19 +117,19 @@ ex1_trafic_server <- function (id)
                      actionButton(session$ns("btn_reset_view"), "Inapoi", icon = icon("arrow-left"))
                    }
                  })
-
+ 
                  #histograma pentru trafic anual
                  output$plot_trafic_anual<- renderPlotly(
                    {
                      req(date_trafic())
                      
-                     p <- ggplot(date_trafic(), aes(x = clienti)) + 
+                     p <- ggplot(date_trafic(), aes(x = clienti, text=paste("Clienti:", ..x.., "<br>Zile:", ..count..))) + 
                        geom_histogram(fill = "skyblue", color = "black", bins = 30) +
                        facet_wrap(~anul) + 
                        theme_minimal() + 
-                       labs(title = "Distributia Traficului pe Ani")
+                       labs(title = "Distributia Traficului pe Ani", y = "Zile")
                        
-                     ggplotly(p) %>% config(displayModeBar = FALSE)
+                     ggplotly(p, tooltip="text") %>% config(displayModeBar = FALSE)
                    }
                  )
                  
@@ -117,18 +141,30 @@ ex1_trafic_server <- function (id)
                      
                      dt <- date_trafic()
                      
+                     # adaugare etichete luni
+                     luni_nume <- c("IAN", "FEB", "MAR", "APR", "MAI", "IUN", "IUL", "AUG", "SEP", "OCT", "NOI", "DEC")
+                     dt$luna_nume <- factor(dt$luna, levels = 1:12, labels = luni_nume)
+                     
+                     # adaugare anotimpuri (functie definita mai sus, refolosim sau apelam din nou)
+                     # get_anotimp deja exista in scope
+                     dt$anotimp <- sapply(dt$luna, get_anotimp)
+                     # legenda anotimpuri
+                     dt$anotimp <- factor(dt$anotimp, levels = c("Iarna", "Primavara", "Vara", "Toamna"))
+                     
                      if (is.null(selected_view())) {
                        
                        # view de tip grid
                        
-                       p <- ggplot(dt, aes(x = clienti, customdata = paste(anul, "-", luna))) + 
-                         geom_histogram(fill = "orange", color = "black", bins = 15) +
-                         facet_grid(anul ~ luna, scales = "free_y") + 
+                       p <- ggplot(dt, aes(x = clienti, fill = anotimp, customdata = paste(anul, "-", luna), 
+                                           text=paste("Clienti:", ..x.., "<br>Zile:", ..count..))) + 
+                         geom_histogram(color = NA, bins = 15) + # Scoatem conturul negru pentru vizibilitate
+                         facet_grid(anul ~ luna_nume, scales = "free_y") + 
+                         scale_fill_manual(values = c("Iarna" = "skyblue", "Primavara" = "lightgreen", "Vara" = "orange", "Toamna" = "gold")) +
                          theme_minimal() + 
                          theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-                         labs(title = "Distributia Traficului pe Luni", subtitle = "Click pe o histogramt pentru detalii")
+                         labs(title = "Distributia Traficului pe Luni", subtitle = "Click pe o histograma pentru detalii", y = "Zile")
 
-                       ggplotly(p, source = "trafic_lunar") %>% 
+                       ggplotly(p, source = "trafic_lunar", tooltip="text") %>% 
                          config(displayModeBar = FALSE) %>%
                          event_register("plotly_click")
 
@@ -148,12 +184,14 @@ ex1_trafic_server <- function (id)
                                
                                df_filtrat <- dt %>% filter(anul == sel_an, luna == sel_luna)
                                
-                               p <- ggplot(df_filtrat, aes(x = clienti)) + 
-                                 geom_histogram(fill = "orange", color = "black", bins = 30) +
+                               # calculam anotimpul pentru titlu sau folosim direct din df_filtrat
+                               p <- ggplot(df_filtrat, aes(x = clienti, fill = anotimp, text=paste("Clienti:", ..x.., "<br>Zile:", ..count..))) + 
+                                 geom_histogram(color = "black", bins = 30) + 
+                                 scale_fill_manual(values = c("Iarna" = "skyblue", "Primavara" = "lightgreen", "Vara" = "orange", "Toamna" = "gold")) +
                                  theme_minimal() + 
-                                 labs(title = paste("Distributia Traficului - Anul", sel_an, "Luna", sel_luna))
+                                 labs(title = paste("Distributia Traficului - Anul", sel_an, "Luna", sel_luna), y = "Zile")
                                
-                               ggplotly(p) %>% config(displayModeBar = FALSE)
+                               ggplotly(p, tooltip="text") %>% config(displayModeBar = FALSE)
                            } else {
                                ggplotly(ggplot(dt, aes(x=clienti)) + geom_histogram()) %>% config(displayModeBar = FALSE) 
                            }
