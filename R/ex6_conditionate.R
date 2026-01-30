@@ -33,18 +33,17 @@ calculeaza_conditionate <- function(df_simulare, prag_retry_mic, prag_timp_bun =
     }
     
     
-    # b) Calculati mediile conditionate: E(T | I=1) si E(T | I=0)
-    # Adica: Timpul mediu cand avem Succes vs Timpul mediu cand avem Esec
+
+    # E(T | I=1) si E(T | I=0)
+    # E[T | I=1] = E[T * I] / P(I=1)
+    # T * I este valoarea T cand I=1, si 0 cand I=0.
     
-    # Formula: E[T | I=1] = E[T * I] / P(I=1)
-    # Obs: T * I este valoarea T cand I=1, si 0 cand I=0.
-    
-    # 1. Calculam numaratorul E[T * I] pentru Succes
-    # Pentru Esec (I=0), indicatorul e (1 - I).
+    # E[T * I] pentru succes
+    # Pentru esec (I=0), indicatorul e (1 - I).
     media_T_ori_I_Succes <- mean(col_TimpTotal * col_Succes) 
     media_T_ori_I_Esec   <- mean(col_TimpTotal * (1 - col_Succes))
     
-    # 2. Numitorul este P(I=1) aka prob_Conditie_A calculat mai sus
+    # P(I=1)
     prob_I_0 <- mean(col_Succes == 0) # P(I=0)
     
     medie_Timp_la_Succes <- 0
@@ -65,4 +64,3 @@ calculeaza_conditionate <- function(df_simulare, prag_retry_mic, prag_timp_bun =
         Timp_Mediu_Esec = medie_Timp_la_Esec
     ))
 }
-
