@@ -34,7 +34,7 @@ ui <- fluidPage(
     tabPanel("2. Timpi de Raspuns", ex2_latenta_UI("ex2")),
     tabPanel("3. Evenimente & Retry", ex3_evenimente_UI("ex3")),
     tabPanel("9. Agregare & CLT", ex9_an_agregare_UI("ex9")),
-    tabPanel("11. Impact Economic", ex11_impact_economic_UI("ex11"))
+    tabPanel("11. Impact Economic", ex11_impact_economic_UI("ex11")),
     tabPanel("6. Conditionate", ex6_conditionate_UI("ex6")),
     tabPanel("7. Dependenta", ex7_dependenta_UI("ex7")),
     tabPanel("8. Inegalitati", ex8_inegalitati_UI("ex8"))
