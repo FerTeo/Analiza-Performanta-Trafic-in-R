@@ -1,5 +1,4 @@
-# Ex 6: UI & Server
-source("R/ex3_evenimente.R") # avem nevoie de simuleaza_evenimente pentru date
+source("R/ex3_evenimente.R") 
 source("R/ex6_conditionate.R")
 
 ex6_conditionate_UI <- function(id) {
@@ -39,7 +38,7 @@ ex6_conditionate_server <- function(id) {
     moduleServer(id, function(input, output, session) {
         
         rezultate <- eventReactive(input$btn_calc, {
-            # 1. Simulam datele
+            # simulam datele
             df <- simuleaza_evenimente(
                 nr_simulari = input$nr_simulari,
                 prob_succes = input$p_succes,
@@ -47,7 +46,7 @@ ex6_conditionate_server <- function(id) {
                 nr_max_retry = input$nr_max_retry
             )
             
-            # 2. Calculam conditionatele
+            # calculam conditionatele
             calculeaza_conditionate(df, prag_retry_mic = input$prag_n0, prag_timp_bun = input$prag_t0)
         })
         

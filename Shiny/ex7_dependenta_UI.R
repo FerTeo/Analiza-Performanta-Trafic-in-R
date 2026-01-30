@@ -1,4 +1,3 @@
-# Ex 7: UI & Server
 source("R/ex7_dependenta.R")
 source("R/ex3_evenimente.R") # pentru cazul independent (comparatie)
 
@@ -37,7 +36,7 @@ ex7_dependenta_server <- function(id) {
     moduleServer(id, function(input, output, session) {
         
         date_comp <- eventReactive(input$btn_sim, {
-            # 1. Simulare Independenta (Standard)
+            # simulare independenta
             df_indep <- simuleaza_evenimente(
                 nr_simulari = input$nr_simulari,
                 prob_succes = input$p_succes,
@@ -46,7 +45,7 @@ ex7_dependenta_server <- function(id) {
             )
             df_indep$Tip = "Independent"
             
-            # 2. Simulare Dependenta
+            # simulare dependenta
             df_dep <- simuleaza_dependenta(
                 nr_simulari = input$nr_simulari,
                 prob_succes_per_try = input$p_succes,
@@ -56,7 +55,7 @@ ex7_dependenta_server <- function(id) {
             )
             df_dep$Tip = "Dependent"
             
-            # Combinam pentru plot
+            # combinam pentru plot
             rbind(df_indep[, c("T", "Tip")], df_dep[, c("T", "Tip")])
         })
         

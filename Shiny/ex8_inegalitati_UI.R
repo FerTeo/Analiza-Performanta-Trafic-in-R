@@ -30,7 +30,7 @@ ex8_inegalitati_server <- function(id) {
     moduleServer(id, function(input, output, session) {
         
         rezultate <- eventReactive(input$btn_check, {
-            # Generam date
+            # generam date
             df <- simuleaza_evenimente(input$nr_simulari, 0.5, input$medie_latenta, 3) # p_succes 0.5 fix pt simplitate aici
             
             verificare_inegalitati(df, input$prag_markov, input$k_cebisev)
@@ -40,7 +40,7 @@ ex8_inegalitati_server <- function(id) {
             res <- rezultate()
             req(res)
             
-            # Helper pt culoare
+            # helper pt culoare
             color_bool <- function(val) if(val) "green" else "red"
             
             tagList(
