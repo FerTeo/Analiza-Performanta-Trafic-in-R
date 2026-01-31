@@ -11,6 +11,7 @@ source("R/ex3_evenimente.R")
 source("R/ex4_variabile_bidim_discrete.R")
 source("R/ex5_variabile_bidim_discrete_si_continue.R")
 source("R/ex9_an_agregare.R")
+source("R/ex10_churn.R")
 source("R/ex11_impact_economic.R")
 source("R/ex6_conditionate.R")
 source("R/ex7_dependenta.R")
@@ -25,6 +26,7 @@ source("Shiny/ex4_variabile_bidim_discrete_UI.R")
 source("Shiny/ex5_variabile_bidim_discrete_si_continue_UI.R")
 source("Shiny/ex12_vizualizare_UI.R")
 source("Shiny/ex9_an_agregare_UI.R")
+source("Shiny/ex10_churn_UI.R")
 source("Shiny/ex11_impact_economic_UI.R")
 source("Shiny/ex6_conditionate_UI.R")
 source("Shiny/ex7_dependenta_UI.R")
@@ -44,6 +46,7 @@ ui <- fluidPage(
     tabPanel("7. Dependenta", ex7_dependenta_UI("ex7")),
     tabPanel("8. Inegalitati", ex8_inegalitati_UI("ex8")),
     tabPanel("9. Agregare & CLT", ex9_an_agregare_UI("ex9")),
+    tabPanel("10. Churn (Pierdere Utilizatori)", ex10_churn_UI("ex10")),
     tabPanel("11. Impact Economic", ex11_impact_economic_UI("ex11")),
     tabPanel("12. Vizualizare Statistica", ex12_vizualizare_UI("ex12"))
   )
@@ -61,6 +64,7 @@ server <- function(input, output, session) {
   ex7_dependenta_server("ex7")
   ex8_inegalitati_server("ex8")
   ex9_an_agregare_server("ex9")
+  ex10_churn_server("ex10")
   ex11_impact_economic_server("ex11")
   ex12_vizualizare_server("ex12")
 }
