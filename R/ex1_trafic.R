@@ -92,7 +92,8 @@ ex1_trafic_server <- function(id) {
       selected_view <- reactiveVal(NULL)
 
       # observer pentru a putea da click pe grafic
-      observeEvent(event_data("plotly_click", source = "trafic_lunar"), {
+      observe({
+        req(date_trafic())
         click_data <- event_data("plotly_click", source = "trafic_lunar")
         if (!is.null(click_data)) {
           selected_view(click_data)
@@ -156,8 +157,8 @@ ex1_trafic_server <- function(id) {
             labs(title = "Distributia Traficului pe Luni", subtitle = "Click pe o histograma pentru detalii", y = "Zile")
 
           ggplotly(p, source = "trafic_lunar", tooltip = "text") %>%
-            config(displayModeBar = FALSE) %>%
-            event_register("plotly_click")
+            event_register("plotly_click") %>%
+            config(displayModeBar = FALSE)
         } else {
           # histograma individuala pentru fiecare luna
           click_info <- selected_view()
@@ -175,20 +176,26 @@ ex1_trafic_server <- function(id) {
               df_filtrat <- dt %>% filter(anul == sel_an, luna == sel_luna)
 
               # calculam anotimpul pentru titlu sau folosim direct din df_filtrat
-              p <- ggplot(df_filtrat, aes(x = clienti, fill = anotimp, text = paste("Clienti:", ..x.., "<br>Zile:", ..count..))) +
+              p <- ggplot(df_filtrat, aes(x = clienti, fill = anotimp, customdata = paste(anul, "-", luna), text = paste("Clienti:", ..x.., "<br>Zile:", ..count..))) +
                 geom_histogram(color = "black", bins = 30) +
                 scale_fill_manual(values = c("Iarna" = "skyblue", "Primavara" = "lightgreen", "Vara" = "orange", "Toamna" = "gold")) +
                 theme_minimal() +
                 labs(title = paste("Distributia Traficului - Anul", sel_an, "Luna", sel_luna), y = "Zile")
 
-              ggplotly(p, tooltip = "text") %>% config(displayModeBar = FALSE)
+              ggplotly(p, source = "trafic_lunar", tooltip = "text") %>%
+                event_register("plotly_click") %>%
+                config(displayModeBar = FALSE)
             } else {
               ggplotly(ggplot(dt, aes(x = clienti)) +
-                geom_histogram()) %>% config(displayModeBar = FALSE)
+                geom_histogram(), source = "trafic_lunar") %>%
+                event_register("plotly_click") %>%
+                config(displayModeBar = FALSE)
             }
           } else {
             ggplotly(ggplot(dt, aes(x = clienti)) +
-              geom_histogram()) %>% config(displayModeBar = FALSE)
+              geom_histogram(), source = "trafic_lunar") %>%
+              event_register("plotly_click") %>%
+              config(displayModeBar = FALSE)
           }
         }
       })
