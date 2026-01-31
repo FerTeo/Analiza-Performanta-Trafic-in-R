@@ -17,7 +17,7 @@ Exercițiul 7 modelează acest scenariu de **dependență**, unde eșecurile ant
 Am ales să modelăm dependența prin creșterea timpului mediu de răspuns după fiecare eșec.
 
 ### 2.1 Distribuția Exponențială Variabilă
-Timpul de răspuns pentru o încercare ($S_i$) urmează o distribuție exponențială $Exp(\lambda)$.
+Timpul de răspuns pentru o încercare ( $S_i$ ) urmează o distribuție exponențială $Exp(\lambda)$.
 Media acestei distribuții este $E[S_i] = \frac{1}{\lambda}$.
 
 În scenariul independent, $\lambda$ este constant ($\lambda_0$).
@@ -62,7 +62,7 @@ for (nr_retry in 0:nr_max_retry) {
 Interfața Shiny (Tab-ul 7) permite vizualizarea grafică comparativă între modelul Independent și cel Dependent.
 
 **Observații:**
-1.  **Distribuția Timpului Total ($T$):** În cazul dependent, coada distribuției ("tail") se lungește semnificativ spre dreapta. Apar timpi totali mult mai mari decât în cazul independent.
-2.  **Impactul asupra SLA:** Probabilitatea de a respecta SLA-ul ($P(T \le t_0)$) scade dramatic în scenariul dependent, chiar dacă probabilitatea de succes final ($P(A)$) rămâne similară (dacă numărul de retry-uri e suficient).
+1.  **Distribuția Timpului Total ( $T$ ):** În cazul dependent, coada distribuției ("tail") se lungește semnificativ spre dreapta. Apar timpi totali mult mai mari decât în cazul independent.
+2.  **Impactul asupra SLA:** Probabilitatea de a respecta SLA-ul ( $P(T \le t_0)$ ) scade dramatic în scenariul dependent, chiar dacă probabilitatea de succes final ( $P(A)$ ) rămâne similară (dacă numărul de retry-uri e suficient).
 
 Această analiză demonstrează importanța mecanismelor de "Backoff" (așteptare exponențială) în sistemele distribuite, dar și riscul ca aceste mecanisme să crească latența totală percepută de utilizator.
