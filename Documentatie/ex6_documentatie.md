@@ -14,12 +14,16 @@ Exercițiul 6 își propune să rafineze analiza performanței prin calcularea u
 
 ### 2.1 Formula Probabilității Condiționate
 Probabilitatea condiționată a evenimentului $A$ dat fiind $B$ se definește ca:
+
 $$ P(A | B) = \frac{P(A \cap B)}{P(B)} $$
+
 Unde $P(A \cap B)$ este probabilitatea ca ambele evenimente să aibă loc simultan.
 
 ### 2.2 Media Condiționată
 Valoarea așteptată (media) a unei variabile aleatoare $T$, condiționată de producerea unui eveniment $A$, este:
+
 $$ E[T | A] = \frac{E[T \cdot \mathbb{1}_A]}{P(A)} $$
+
 *   Numărătorul $E[T \cdot \mathbb{1}_A]$ reprezintă media valorilor $T$ doar pentru cazurile unde $A$ s-a întâmplat (restul fiind considerate 0).
 *   Numitorul $P(A)$ normalizează rezultatul la submulțimea cazurilor favorabile.
 
