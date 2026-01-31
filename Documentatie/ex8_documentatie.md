@@ -1,6 +1,6 @@
 # Documentație Cerința 8: Inegalități Probabilistice
 
-**Autor:** Bulacu Daria / Donea Fernando-Emanuel
+**Autor: Rachieru Gheorghe Gabriel
 
 ## 1. Descrierea Problemei
 

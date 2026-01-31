@@ -1,6 +1,6 @@
 # Documentație Cerința 7: Analiza Dependenței
 
-**Autor:** Bulacu Daria / Donea Fernando-Emanuel
+**Autor: Rachieru Gheorghe Gabriel
 
 ## 1. Descrierea Problemei
 
