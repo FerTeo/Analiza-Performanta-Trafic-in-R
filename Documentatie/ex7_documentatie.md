@@ -23,10 +23,14 @@ Media acestei distribuții este $E[S_i] = \frac{1}{\lambda}$.
 În scenariul independent, $\lambda$ este constant ($\lambda_0$).
 În scenariul dependent, introducem un **factor de penalizare** $f > 1$ (ex: $f=1.5$).
 Dacă încercarea $k$ eșuează, rata pentru încercarea $k+1$ devine:
+
 $$ \lambda_{k+1} = \frac{\lambda_k}{f} $$
 
+
 Deoarece media este inversul ratei, rezultă că timpul mediu crește:
+
 $$ E[S_{k+1}] = E[S_k] \times f $$
+
 
 Aceasta simulează faptul că serverul răspunde din ce în ce mai greu pe măsură ce insistăm în timpul unei congestii.
 
