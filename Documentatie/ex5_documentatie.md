@@ -1,6 +1,6 @@
 # Documentație Cerința 5: Variabile Bidimensionale (N, T) - Discret & Continuu
 
-Autor: Donea Fernando-Emanuel
+Autor: Roșca Teodora-Maia
 
 ## 1. Descrierea Problemei
 
@@ -35,6 +35,8 @@ Deoarece $N$ ia valori discrete puține (1, 2, 3...), este ideal să vizualizăm
 *   Axa X: Numărul de încercări ($N$).
 *   Axa Y: Timpul Total ($T$).
 *   Fiecare "cutie" arată mediana și dispersia timpului pentru un număr fix de încercări. Se observă clar cum cutiile "urcă" pe axa Y odată cu creșterea lui $N$.
+
+![Alt text](/PozeDocumentatie/ex5_boxplot.png)
 
 ## 4. Pachete Software și Surse
 

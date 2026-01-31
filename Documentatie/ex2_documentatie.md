@@ -1,6 +1,6 @@
 # Documentație Cerința 2: Modelarea Timpilor de Răspuns (Variabile Continue)
 
-Autor: Donea Fernando-Emanuel
+Autor: Roșca Teodora-Maia
 
 ## 1. Descrierea Problemei
 
@@ -28,13 +28,18 @@ Modelarea se bazează pe variabile aleatoare continue:
 
 ## 3. Reprezentări Grafice
 
-Exercițiul include:
 1.  **Graficul Densității de Probabilitate:**
     *   O histogramă a datelor simulate suprapusă cu curba teoretică a densității (PDF - Probability Density Function).
     *   Permite validarea vizuală a simulării (“cât de bine se potrivește modelul teoretic pe datele empirice”).
 
+![Alt text](/PozeDocumentatie/ex2_grafic_densitate.png)
+
+
 2.  **Statistici Descriptive:**
     *   Tabel comparativ între valorile empirice (calculate din date) și cele teoretice (din formule).
+  
+  ![Alt text](/PozeDocumentatie/ex2_tabel_comparativ.png)
+  
 
 ## 4. Pachete Software și Surse
 
@@ -72,7 +77,7 @@ simuleaza_latenta <- function(n, tip, param1, param2) {
 
 ### 5.2 Calculul Modului Empiric
 
-Pentru distribuții continue, "modul" este vârful densității. Estimăm acest lucru folosind funcția `density` din R (Kernel Density Estimation).
+Pentru distribuții continue, "modul" sau valoarea modală este vârful densității. Estimăm acest lucru folosind funcția `density` din R (Kernel Density Estimation).
 
 ```r
 calculeaza_mod_empiric <- function(x) {

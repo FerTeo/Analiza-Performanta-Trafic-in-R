@@ -24,25 +24,26 @@ Scopul este analiza distribuției comune (joint distribution) a perechii $(N, F)
     Două variabile sunt independente dacă $P(N=n, F=f) = P(N=n) \times P(F=f)$ pentru orice pereche $(n, f)$.
     Invers, dependența înseamnă că informația despre una ne influențează cunoștințele despre cealaltă.
 
-*   **Testul Chi-Square ($\chi^2$) de Independență:**
-    Un test statistic pentru a verifica dacă există o asociere semnificativă între două variabile categorice/discrete.
-    *   Ipoteza nulă ($H_0$): Variabilele sunt independente.
-    *   Dacă $p-value < 0.05$, respingem $H_0$ și conchidem că sunt dependente.
-
 ## 3. Reprezentări Grafice
 
 1.  **Heatmap (Distribuția Comună):**
     *   O matrice colorată unde intensitatea culorii reprezintă probabilitatea $P(N, F)$.
     *   Permite vizualizarea rapidă a combinațiilor frecvente (ex: $N=1, F=0$ pentru succes din prima).
+  
+  ![Alt text](/PozeDocumentatie/ex4_grafic_dist_comuna.png)
+
 
 2.  **Grafice Marginale:**
     *   Histograma pentru $N$ și Histograma pentru $F$ separate.
     *   Arată comportamentul individual al fiecărei variabile.
+  
+  ![Alt text](/PozeDocumentatie/ex4_grafic_histograme.png)
+
 
 ## 4. Pachete Software și Surse
 
 ### Pachete R utilizate:
-*   `reshape2`: Funcția `melt` (implicită în manipularea dataframe-urilor pentru ggplot) este adesea folosită pentru a transforma matrici în format "long" pentru vizualizare. Aici folosim transformarea tabelului de frecvență.
+*   `reshape2`: Funcția `melt` (implicită în manipularea dataframe-urilor pentru ggplot) este folosită pentru a transforma matrici în format "long" pentru vizualizare. Aici este importantă transformarea tabelului de frecvență.
 *   `plotly`: Pentru heatmap interactiv.
     *   *Funcționalitate cheie:* `ggplotly` cu tooltip personalizat (`text = ...`) pentru a afișa probabilitatea exactă la mouse hover.
 *   `gridExtra`: Pentru a afișa graficele marginale unul lângă altul (`grid.arrange`).

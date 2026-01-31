@@ -1,6 +1,6 @@
 # Documentație Cerința 12: Vizualizare Statistică Avansată și Analiza Profitului
 
-Autor: Donea Fernando-Emanuel
+Autor: Roșca Teodora-Maia
 
 ## 1. Descrierea Problemei
 
@@ -28,10 +28,15 @@ Accentul cade pe vizualizarea avansată a distribuțiilor și identificarea valo
 1.  **Histograme Combinate (Subplots):**
     Utilizăm `plotly` pentru a afișa simultan distribuția Timpului și a Profitului. Acestea permit observarea formei distribuției (ex: multimodală, asimetrică).
 
+![Alt text](/PozeDocumentatie/ex12_histograme_combinate.png)
+    
+
 2.  **Boxplot Condiționat:**
     *   Axa X: Rezultatul (Succes / Eșec).
     *   Axa Y: Timpul ($T$).
     *   Permite comparația directă a medianelor și a dispersiei între cele două scenarii. De obicei, eșecurile au mediane mai mari (deoarece implică epuizarea tuturor reîncercărilor).
+  
+![Alt text](/PozeDocumentatie/ex12_boxplot.png)
 
 ## 4. Pachete Software și Surse
 
