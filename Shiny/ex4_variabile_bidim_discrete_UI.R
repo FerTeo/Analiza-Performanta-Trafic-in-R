@@ -21,7 +21,7 @@ ex4_bidimensional_UI <- function(id) {
                    plotOutput(ns("plot_marginale"))
           ),
           tabPanel("Test Independenta", 
-                   verbatimTextOutput(ns("rezultat_test")),
+                   uiOutput(ns("rezultat_test")),
                    uiOutput(ns("interpretare_test"))
           )
         )

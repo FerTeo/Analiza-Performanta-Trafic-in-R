@@ -1,6 +1,6 @@
 # Documentație Cerința 4: Variabile Bidimensionale Discrete (N, F)
 
-Autor: Donea Fernando-Emanuel
+Autor: Roșca Teodora-Maia
 
 ## 1. Descrierea Problemei
 
@@ -92,14 +92,21 @@ df_heatmap$Probabilitate <- df_heatmap$Frecventa / sum(df_heatmap$Frecventa)
 ggplot(df_heatmap, aes(x=N, y=F, fill=Probabilitate)) + geom_tile() ...
 ```
 
-### 5.3 Testul de Independență
+### 5.3 Verificarea Empirică a Independenței
 
-Folosim funcția nativă `chisq.test` pe tabelul de contingență.
+Verificăm direct condiția de independență:
+
+$$ P(N=n, F=f) \stackrel{?}{=} P(N=n) \times P(F=f) $$
+
+Calculăm diferența maximă dintre probabilitățile comune observate și cele teoretice (presupunând independența). Dacă această diferență este semnificativă (> 0.01), inseamnă că variabilele sunt dependente.
 
 ```r
-test <- chisq.test(table(df$N, df$F))
+# Calculam diferenta maxima
+diff_matrix <- abs(comuna - teoretic_indep)
+max_diff <- max(diff_matrix)
 ```
-În acest caz, testul va returna aproape mereu un p-value foarte mic, confirmând dependența puternică. (Logic: $F$ nu poate fi mai mare sau egal cu $N$ dacă ultima încercare e succes, și $F$ depinde direct de câte încercări fac).
+
+Rezultatul arată întotdeauna o diferență mare, confirmând dependența. (Logic: $F$ depinde direct de $N$).
 
 ## 6. Concluzii
 
