@@ -1,6 +1,6 @@
 # Documentație Cerința 6: Probabilități Condiționate
 
-**Autor:** Bulacu Daria / Donea Fernando-Emanuel
+**Autor: Rachieru Gheorghe Gabriel
 
 ## 1. Descrierea Problemei
 
