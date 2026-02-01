@@ -56,7 +56,9 @@ Codul sursă se află în `R/ex6_conditionate.R`.
 
 ### 3.4 Rezultate Vizuale
 
-![Rezultate Conditionate](/PozeDocumentatie/ex7_conditionari.png)
+
+<img src="/PozeDocumentatie/ex6_inegalitati.png" width="500" alt="Rezultate Ex 6">
+
 
 ## 4. Concluzii și Interpretare
 Rezultatele obținute în interfața Shiny (Tab-ul 6) ne permit să observăm corelații interesante:

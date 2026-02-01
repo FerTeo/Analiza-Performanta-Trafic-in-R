@@ -62,7 +62,9 @@ for (nr_retry in 0:nr_max_retry) {
 
 Interfața Shiny (Tab-ul 7) permite vizualizarea grafică comparativă între modelul Independent și cel Dependent.
 
-![Comparatie Dependenta](/PozeDocumentatie/ex6_inegalitati.png)
+
+<img src="/PozeDocumentatie/ex7_conditionari.png" width="500" alt="Comparatie Dependenta">
+
 
 **Observații:**
 

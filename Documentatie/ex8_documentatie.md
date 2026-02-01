@@ -23,7 +23,9 @@ $$ P(X \ge a) \le \frac{E[X]}{a} $$
 **În contextul nostru:**
 Probabilitatea ca timpul total $T$ să depășească un prag critic $a$ este cel mult media timpului împărțită la $a$.
 
-![Markov](/PozeDocumentatie/ex8_markov.png)
+
+<img src="/PozeDocumentatie/ex8_markov.png" width="500" alt="Markov">
+
 
 
 ### 2.2 Inegalitatea lui Cebîșev (Chebyshev)
@@ -37,7 +39,9 @@ $$ P(|X - \mu| \ge k\sigma) \le \frac{1}{k^2} $$
 **În contextul nostru:**
 Spune că timpii de răspuns "extremi" (foarte mici sau foarte mari față de medie) sunt rari. De exemplu, cel mult $1/4$ (25%) din cereri pot avea timpi deviați cu mai mult de $2\sigma$ față de medie.
 
-![Cebisev](/PozeDocumentatie/ex8_cebisev.png)
+
+<img src="/PozeDocumentatie/ex8_cebisev.png" width="500" alt="Cebisev">
+
 
 
 ### 2.3 Inegalitatea lui Jensen
@@ -55,7 +59,9 @@ $$ (E[T])^2 \le E[T^2] $$
 
 Aceasta este, de fapt, echivalentă cu proprietatea că varianța este nenegativă ($Var(T) = E[T^2] - (E[T])^2 \ge 0$).
 
-![Jensen](/PozeDocumentatie/ex8_jensen.png)
+
+<img src="/PozeDocumentatie/ex8_jensen.png" width="500" alt="Jensen">
+
 
 
 ## 3. Implementare și Verificare
