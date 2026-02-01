@@ -678,7 +678,7 @@ ggplot(df, aes(x=factor(N), y=T, fill=factor(N))) +
 
 # Documentație Cerința 6: Probabilități Condiționate
 
-**Autor: Rachieru Gheorghe Gabriel
+Autor: Rachieru Gheorghe Gabriel
 
 ## 1. Descrierea Problemei
 
@@ -735,7 +735,8 @@ Codul sursă se află în `R/ex6_conditionate.R`.
 ### 3.4 Rezultate Vizuale
 
 
-<img src="/PozeDocumentatie/ex6_inegalitati.png" width="500" alt="Rezultate Ex 6">
+![Alt text](/PozeDocumentatie/ex6_inegalitati.png)
+
 
 
 ## 4. Concluzii și Interpretare
@@ -748,7 +749,7 @@ Rezultatele obținute în interfața Shiny (Tab-ul 6) ne permit să observăm co
 
 # Documentație Cerința 7: Analiza Dependenței
 
-**Autor: Rachieru Gheorghe Gabriel
+Autor: Rachieru Gheorghe Gabriel
 
 ## 1. Descrierea Problemei
 
@@ -811,7 +812,7 @@ for (nr_retry in 0:nr_max_retry) {
 Interfața Shiny (Tab-ul 7) permite vizualizarea grafică comparativă între modelul Independent și cel Dependent.
 
 
-<img src="/PozeDocumentatie/ex7_conditionari.png" width="500" alt="Comparatie Dependenta">
+![Alt text](/PozeDocumentatie/ex7_conditionari.png)
 
 
 **Observații:**
@@ -825,7 +826,7 @@ Această analiză demonstrează importanța mecanismelor de "Backoff" (așteptar
 
 # Documentație Cerința 8: Inegalități Probabilistice
 
-**Autor: Rachieru Gheorghe Gabriel
+Autor: Rachieru Gheorghe Gabriel
 
 ## 1. Descrierea Problemei
 
@@ -849,7 +850,7 @@ $$ P(X \ge a) \le \frac{E[X]}{a} $$
 Probabilitatea ca timpul total $T$ să depășească un prag critic $a$ este cel mult media timpului împărțită la $a$.
 
 
-<img src="/PozeDocumentatie/ex8_markov.png" width="500" alt="Markov">
+![Alt text](/PozeDocumentatie/ex8_markov.png)
 
 
 
@@ -911,7 +912,7 @@ Acest lucru validează robustețea generatorului nostru de numere aleatoare și 
 
 # Documentație Cerința 9: Aproximarea Normală (Teorema Limită Centrală)
 
-## AUTOR : Bulacu Daria 
+Autor : Bulacu Daria 
 
 ## 1. Descrierea Problemei
 
@@ -1105,7 +1106,7 @@ Fundamentarea teoretică a algoritmilor utilizați în Cerința 9 se bazează pe
 
 # Documentație Cerința 10: Churn (Pierderea Utilizatorilor)
 
-AUTOR : Donea Fernando-Emanuel
+Autor : Donea Fernando-Emanuel
 
 
 
@@ -1218,7 +1219,7 @@ Aceasta permite o comparație directă: "Care mecanism este mai periculos pentru
 
 # Documentație Cerința 11: Impact Economic și Analiză Cost-Beneficiu
 
-## AUTOR : Bulacu Daria 
+Autor:  Bulacu Daria 
 
 ## 1. Descrierea Problemei
 
