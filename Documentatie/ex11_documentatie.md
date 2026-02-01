@@ -35,8 +35,12 @@ Analiza vizuală este crucială pentru a înțelege volatilitatea profitului:
     *   Permite identificarea sezonalității (ex: profituri mari vara, mici iarna) și a zilelor critice cu pierderi majore.
     *   Linia de zero demarchează clar zilele profitabile de cele cu pierderi.
 
+    ![Evoluția Profitului](../PozeDocumentatie/ex11_evolutie_profit.png)
+
 2.  **Histograma Distribuției Profitului:**
     *   Arată frecvența anumitor nivele de profit. O distribuție asimetrică spre stânga (coadă lungă negativă) indică un risc mare de pierderi catastrofale, chiar dacă media este pozitivă.
+
+    ![Histograma Distribuției Profitului](../PozeDocumentatie/ex11_histograma_profit.png)
 
 ## 4. Pachete Software și Surse de Inspirație
 

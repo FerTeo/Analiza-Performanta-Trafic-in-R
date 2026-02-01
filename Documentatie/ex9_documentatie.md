@@ -36,9 +36,13 @@ Proiectul include vizualizări esențiale pentru validarea ipotezei de normalita
     *   Barele albastre reprezintă frecvența empirică a valorilor simulate (profit sau latență zilnică).
     *   Linia roșie continuă reprezintă curba teoretică a distribuției Normale, având aceeași medie și deviație standard ca datele simulate. Suprapunerea vizuală confirmă validitatea aproximării.
 
+    ![Histograma cu Curba de Densitate Suprapusă](../PozeDocumentatie/ex9_histograma.png)
+
 2.  **QQ Plot (Quantile-Quantile Plot):**
     *   Un instrument de diagnostic statistic care compară cuantilele distribuției empirice cu cuantilele distribuției Normale teoretice.
     *   Dacă punctele albastre se aliniază pe diagonala de referință (linia roșie), datele urmează o distribuție Normală. Abaterile la capete (cozi) indică "fat tails" sau asimetrii.
+    
+    ![Diagnostic QQ Plot](../PozeDocumentatie/ex9_qqplot.png)
 
 ## 4. Pachete Software și Surse de Inspirație
 

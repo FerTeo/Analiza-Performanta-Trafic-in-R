@@ -6,6 +6,16 @@ Această documentație sintetizează conceptele utilizate în cadrul proiectului
 
 În cadrul proiectului, probabilitatea empirică servește ca metodă de validare și explorare a modelelor teoretice, în special acolo unde soluțiile analitice sunt complexe.
 
+În acest proiect, probabilitatea empirică este obținută prin **Simulare Monte Carlo**, o tehnică ce folosește eșantionarea aleatoare repetată pentru a rezolva probleme deterministe sau probabilistice complexe.
+
+* **Fundament Teoretic (Legea Numerelor Mari):**
+    * Simulările noastre (ex: `n=100.000` în Ex3) se bazează pe **Legea Numerelor Mari (LLN)**. Aceasta garantează că, pe măsură ce numărul de experimente crește, media empirică (rezultatul simulării) converge către media teoretică (valoarea așteptată).
+    * Astfel, probabilitatea empirică devine un estimator nedeplasat și consistent al probabilității reale.
+* **Validare și Convergență:**
+    * Funcțiile `trafic_simulat_poisson` (Ex1) și `simuleaza_latenta` (Ex2) generează date care, vizualizate prin histograme, validează distribuțiile teoretice.
+* **Modelarea Sistemelor Complexe:**
+    * Pentru scenarii unde calculul analitic este dificil (ex: probabilitatea de a avea succes după exact 2 retry-uri cu o latență totală < 300ms), metoda Monte Carlo (`simuleaza_evenimente`) oferă o soluție numerică rapidă și precisă, imposibil de obținut prin formule clasice simple.
+
 *   **Validarea Modelelor:**
     *   Funcțiile de simulare precum `trafic_simulat_poisson` (Ex1) sau `simuleaza_latenta` (Ex2) generează seturi de date ("eșantioane") care sunt ulterior comparate cu valorile teoretice returnate de `trafic_teoretic_poisson` sau `statistici_teoretice_latenta`.
     *   Pragul de convergență dintre valorile empirice (calculate cu `mean`, `var`, `calculeaza_mod_empiric`) și cele teoretice confirmă corectitudinea implementării distribuțiilor (Poisson, Gamma, Normală).
@@ -36,6 +46,10 @@ Verificate în `ex8_inegalitati.R` prin funcția `verificare_inegalitati`, acest
     *   Este relevantă pentru funcțiile de cost neliniare. Dacă costul economic crește exponențial cu latența (funcție convexă), calcularea costului bazat doar pe latența medie va subestima costul real. Jensen arată că "costul mediu este mai mare decât costul mediei".
 
 ## d) Legătura dintre performanța tehnică și impactul economic
+
+* **Agregarea și Teorema Limită Centrală (CLT):**
+    * Un rezultat empiric crucial (demonstrat în Ex9) este că, deși latența individuală a unui client poate urma o distribuție asimetrică (Gamma), **latența totală agregată zilnic** tinde către o **Distribuție Normală**.
+    * Această observație empirică simplifică enorm analiza de risc economic, permițându-ne să folosim media și deviația standard ($\mu, \sigma$) pentru a estima intervalele de încredere ale profitului.
 
 Modulul `ex11_impact_economic.R` și funcția `simuleaza_business_case` demonstrează transformarea directă a parametrilor tehnici în rezultate financiare:
 
