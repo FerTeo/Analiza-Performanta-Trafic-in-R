@@ -43,6 +43,7 @@ Analiza vizuală compară curbele de supraviețuire (sau complementul lor, curbe
     *   Un grafic liniar care arată cum crește probabilitatea cumulată ca un utilizator să fi părăsit sistemul până la pasul $t$.
     *   **Scenariul Aleator:** O curbă lină, logaritmică, care tinde asimptotic spre 1.
     *   **Scenariul Condiționat:** O curbă neregulată, dependentă de apariția aleatoare a clusterelor de erori. De obicei, are o pantă mai abruptă la început (dacă $p_{fail}$ e mare) sau rămâne plată mult timp (dacă sistemul e stabil).
+    ![](/PozeDocumentatie/ex10_grafic_churn.png)
 
 ## 4. Pachete Software
 

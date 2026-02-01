@@ -47,13 +47,21 @@ Proiectul include vizualizări interactive esențiale pentru explorarea datelor:
     *   Prezintă distribuția globală a numărului de clienți pentru fiecare an simulat.
     *   Permite verificarea stabilității macroscopice a sistemului pe termen lung.
 
+  ![](/PozeDocumentatie/ex1_histograma_anuala.png)
+
 2.  **Histograme Lunare:**
     *   O matrice de grafice care descompune traficul pe Ani și Luni.
     *   Utilizează coduri de culoare pentru anotimpuri (Iarna-Albastru, Vara-Portocaliu, etc.) pentru a evidenția vizual impactul sezonalității.
     *   Permite observarea rapidă a diferențelor de medie și dispersie între sezoane.
 
+  ![](/PozeDocumentatie/ex1_histograma_luni.png)
+    
+
 3.  **Vizualizare Detaliată:**
     *   Funcționalitate ce permite utilizatorului să dea click pe o lună specifică din situația globală pentru a o analiza în detaliu ("Zoom in").
+
+![](/PozeDocumentatie/ex1_histograma_detaliata.png)
+
 
 ## 4. Pachete Software și Surse de Inspirație
 
