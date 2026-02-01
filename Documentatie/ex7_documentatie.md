@@ -59,9 +59,13 @@ for (nr_retry in 0:nr_max_retry) {
 
 ## 4. Compararea Rezultatelor
 
+
 Interfața Shiny (Tab-ul 7) permite vizualizarea grafică comparativă între modelul Independent și cel Dependent.
 
+![Comparatie Dependenta](/PozeDocumentatie/ex6_inegalitati.png)
+
 **Observații:**
+
 1.  **Distribuția Timpului Total ( $T$ ):** În cazul dependent, coada distribuției ("tail") se lungește semnificativ spre dreapta. Apar timpi totali mult mai mari decât în cazul independent.
 2.  **Impactul asupra SLA:** Probabilitatea de a respecta SLA-ul ( $P(T \le t_0)$ ) scade dramatic în scenariul dependent, chiar dacă probabilitatea de succes final ( $P(A)$ ) rămâne similară (dacă numărul de retry-uri e suficient).
 

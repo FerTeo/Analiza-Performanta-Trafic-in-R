@@ -53,7 +53,13 @@ Codul sursă se află în `R/ex6_conditionate.R`.
 *   **Timp Mediu Succes:** $E[T | I=1]$. Se calculează media timpilor `T` doar pentru rândurile unde `I=1`.
 *   **Timp Mediu Eșec:** $E[T | I=0]$. Se calculează media timpilor `T` doar pentru rândurile unde `I=0`.
 
+
+### 3.4 Rezultate Vizuale
+
+![Rezultate Conditionate](/PozeDocumentatie/ex7_conditionari.png)
+
 ## 4. Concluzii și Interpretare
 Rezultatele obținute în interfața Shiny (Tab-ul 6) ne permit să observăm corelații interesante:
+
 - De obicei, $E[T | Esec] > E[T | Succes]$ într-un sistem cu retry-uri, deoarece eșecul final implică adesea epuizarea tuturor încercărilor disponibile (timp maxim pierdut).
 - $P(B|A)$ ne arată procentul real de utilizatori mulțumiți dintre cei care au primit totuși serviciul.
